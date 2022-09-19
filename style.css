@@ -1,0 +1,277 @@
+:root {
+	--colorMain: hsl(51, 100%, 50%);
+	--colorDark: hsl(0, 0%, 0%);
+	--colorLight: hsl(0, 0%, 100%);
+}
+
+@font-face {
+	font-family: Pixeboy;
+	src: url('./assets/Pixeboy.ttf');
+}
+
+@font-face {
+	font-family: PixeloidSans;
+	src: url('./assets/PixeloidSans.ttf');
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	cursor: url('assets/cursor.cur'), auto;
+	color: var(--colorLight);
+	font-family: 'PixeloidSans';
+}
+
+*:focus {
+	outline: 0 !important;
+}
+
+body {
+	overflow: hidden;
+	background-color: var(--colorDark);
+}
+
+input,
+button,
+a {
+	cursor: pointer;
+}
+
+span {
+	color: var(--colorMain);
+}
+
+#root-index {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 600px;
+	height: 400px;
+	border: 3px solid var(--colorMain);
+	border-radius: 20px;
+	padding: 40px 60px;
+}
+
+h1 {
+	user-select: none;
+	font-family: 'Pixeboy';
+	font-size: 6rem;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+label,
+#inp-username,
+#btn-start {
+	display: block;
+	margin: auto;
+	text-align: center;
+}
+
+#inp-username,
+button {
+	color: var(--colorDark);
+}
+
+#inp-username {
+	margin-top: 10px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 1rem;
+}
+
+button {
+	padding: 10px 20px;
+	background-color: var(--colorMain);
+	font-size: 1rem;
+	transition: all 300ms ease;
+	border: 2px solid var(--colorDark);
+	border-radius: 20px;
+	user-select: none;
+}
+
+button:hover {
+	background-color: var(--colorDark);
+	color: var(--colorMain);
+	border-color: var(--colorMain);
+	scale: 1.05;
+}
+
+button:active {
+	scale: 0.95;
+}
+
+#btn-start {
+	width: 80%;
+	margin: 50px auto 0;
+}
+
+.left {
+	padding: 40px 0 50px 20%;
+	height: 100vh;
+	float: left;
+}
+
+.left a,
+.left p {
+	display: block;
+}
+
+.left button {
+	margin-top: 10px;
+	margin-left: -4px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.left a {
+	margin-bottom: 20px;
+}
+
+.left p {
+	margin-bottom: 10px;
+}
+
+.next {
+	width: 150px;
+	height: 150px;
+	border: 3px solid var(--colorMain);
+	padding: 30px 10px;
+}
+
+.controls {
+	margin-top: 50px;
+}
+
+h3 {
+	margin: 30px 0 15px;
+}
+
+.right {
+	width: 40%;
+	height: 100vh;
+	float: right;
+	position: relative;
+}
+
+.right-container {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translate(-50%, -48%);
+}
+
+.right-container button {
+	position: relative;
+	width: 112px;
+	margin-left: 15px;
+	z-index: 2;
+}
+
+.right-container .pause-btn {
+	margin-left: 48px;
+	opacity: 1;
+	transition: opacity 200ms ease-in, transform 300ms ease-in;
+	z-index: 1;
+}
+
+.pause-btn[shown='false'] {
+	transform: translateX(-150px);
+	opacity: 0;
+}
+
+canvas#game-canvas {
+	display: block;
+	margin-bottom: 20px;
+	border: 3px solid var(--colorMain);
+	border-radius: 5px;
+}
+
+#leaderboard-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: hsl(0, 0%, 0%, 0.5);
+	transition: background-color 600ms ease;
+}
+
+#leaderboard-container[shown='false'] {
+	background-color: hsl(0, 0%, 0%, 0);
+	z-index: -1;
+}
+
+.lb-screen {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 40px 50px;
+	background-color: hsl(0, 0%, 0%, 0.8);
+	border: 4px solid var(--colorMain);
+	border-radius: 10px;
+	transition: transform 500ms ease-in, opacity 200ms ease-in-out;
+}
+
+#leaderboard-container[shown='false'] .lb-screen {
+	transform: translate(-50%, -150vh);
+	opacity: 0;
+}
+
+.close {
+	position: absolute;
+	padding: 0;
+	top: 15px;
+	right: 20px;
+	background: none;
+	border: none;
+	font-size: 1.5rem;
+	color: var(--colorLight);
+	transition: color 300ms ease-in, scale 100ms ease-in;
+}
+
+.close:hover {
+	color: red;
+	scale: 1.1;
+}
+
+.lb-screen h2,
+.lb-screen h3 {
+	color: var(--colorMain);
+}
+
+#gameover-container[shown='false'] {
+	visibility: hidden;
+}
+
+#gameover-container[shown='false'] + h3 {
+	margin-top: -64px;
+}
+
+#place {
+	color: var(--colorMain);
+	font-size: 1.1em;
+}
+
+#leaderboard {
+	display: block;
+	max-width: 870px;
+	max-height: 300px;
+}
+
+td,
+th {
+	max-width: 200px;
+	padding: 2px 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+
+td:nth-child(1) {
+	max-width: 50px;
+}

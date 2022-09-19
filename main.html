@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tetris</title>
+		<link rel="stylesheet" href="style.css" />
+		<script src="script.js"></script>
+		<script src="game.js"></script>
+		<script src="tetramino.js"></script>
+		<script src="leaderboard.js"></script>
+		<script src="audio.js"></script>
+	</head>
+	<body onload="loadName(isMain=true), setKeys()">
+		<div class="container">
+			<div class="left">
+				<a id="back" href="/">Back</a>
+				<div class="stats">
+					<h3>Stats</h3>
+					<p>Player: <span id="username"></span></p>
+					<p>Level: <span id="level">1</span>&emsp;Score: <span id="score">0</span></p>
+				</div>
+
+				<button id="l-btn" class="leaderboard-btn" onclick="openLeaderBoard()">
+					Leaderboard
+				</button>
+
+				<h3>Next figure:</h3>
+				<div class="next">
+					<canvas id="next-canvas" width="120" height="120"></canvas>
+				</div>
+
+				<div class="controls">
+					<h3>Controls:</h3>
+					<p>Arrow Left/Right - Move Left/Rigth</p>
+					<p>Arrow Down - Drop</p>
+					<p>Arrow Up - Rotate</p>
+					<p>L - Open Leaderboard</p>
+					<p>Enter - Start/End</p>
+					<p>Spacebar - Pause/Resume</p>
+				</div>
+			</div>
+			<div class="right">
+				<div class="right-container">
+					<canvas id="game-canvas" width="300" height="600"></canvas>
+					<button id="start-btn" class="start-btn" onclick="toggleGame(this)">Start</button>
+					<button id="pause-btn" class="pause-btn" shown="false" onclick="pause(this)">
+						Pause
+					</button>
+				</div>
+			</div>
+			<div id="leaderboard-container" shown="false">
+				<div class="lb-screen">
+					<button id="close" class="close" onclick="closeGameOver()">&times;</button>
+					<div id="gameover-container" shown="false">
+						<h2>Game Over</h2>
+						<p>Your score: <span id="go-score">0</span></p>
+						<p>Your level: <span id="go-level">1</span></p>
+						<p id="place"></p>
+					</div>
+					<h3>Leaderboard</h3>
+					<table id="leaderboard">
+						<thead>
+							<tr>
+								<th>Place</th>
+								<th>Nickname</th>
+								<th>Score</th>
+								<th>Level</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
